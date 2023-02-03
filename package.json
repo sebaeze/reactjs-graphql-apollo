@@ -1,0 +1,40 @@
+{
+  "name": "reactjs-graphql",
+  "version": "1.0.0",
+  "description": "Fetch GraphQL data from React.js app",
+  "default": "src/app.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:parcel": "parcel ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebaeze/reactjs-graphql.git"
+  },
+  "keywords": [
+    "graphql",
+    "typescript",
+    "react.js",
+    "parcel"
+  ],
+  "author": "sebaeze@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebaeze/reactjs-graphql/issues"
+  },
+  "homepage": "https://github.com/sebaeze/reactjs-graphql#readme",
+  "devDependencies": {
+    "@parcel/transformer-typescript-tsc": "^2.8.3",
+    "parcel": "^2.8.3",
+    "process": "^0.11.10",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.7",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "antd": "^5.1.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
