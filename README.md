@@ -1,13 +1,12 @@
 # reactjs-graphql
 
-This app belong to a microservice ecosystem of applications running in containers, which were developed using the stack:
+This app is part of a microservice ecosystem which were developed using the following stack:
 - Typescript
 - Node.js
 - React.js
 - GraphQL
 
-This project is also intended to test Parcel ( https://parceljs.org/docs/ ) as alternative to Webpack
-
+This project is also intended to evaluate/compare Parcel ( https://parceljs.org/docs/ ) as alternative to Webpack
 
 # Contact
 

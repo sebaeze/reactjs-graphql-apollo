@@ -5,7 +5,7 @@
   "default": "src/app.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:parcel": "parcel ./src/index.html"
+    "start": "parcel ./src/index.html"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.7",
+    "@apollo/react-hooks": "^4.0.0",
+    "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "antd": "^5.1.7",
