@@ -1,11 +1,11 @@
 /*
 *
-*/
+*//*
 import * as React             from "react"             ;
 import { Row, Col }           from "antd" ;
 import { useQuery }           from '@apollo/client'    ;
 import { GET_CUSTOMERS }      from "../data" ;
-//
+
 export const MyComp = () => {
     try {
         //
@@ -46,4 +46,11 @@ export const MyComp = () => {
         throw errMyC ;
     } ;
 } ; 
+*/
+//
+import { BodyMain }             from "./body/BodyMain"   ;
+//
+export {
+    BodyMain
+} ;
 //
