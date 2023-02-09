@@ -23,7 +23,7 @@ export interface PropsTableCustomer {
     arrayCustomer: CustomerDataType[]
 } ;
 //
-export const TableCustomers: React.FC<PropsTableCustomer> = ({ arrayCustomer }) => {
+export const TableCustomers: React.FC<PropsTableCustomer> = ({ arrayCustomer=[] }) => {
     try{ 
         //
         const [customersData,setCustomersData] = useState([]) ;
@@ -32,7 +32,7 @@ export const TableCustomers: React.FC<PropsTableCustomer> = ({ arrayCustomer }) 
             setCustomersData(arrayCustomer) ;
         }, [arrayCustomer] )
         //
-        console.log( new Date().toISOString()+"...TableCustomers::customersData: ",customersData.length,";") ;
+        //console.log( new Date().toISOString()+"...TableCustomers::customersData: ",customersData.length,";") ;
         //
         let outRender = <Table 
                             columns={columnsCustomer}
