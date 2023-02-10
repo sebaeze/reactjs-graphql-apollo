@@ -16,7 +16,7 @@ import { CustomerDataType }     from "../interfaces/customer"  ;
 export const BodyMain = (props: any) => {
     try {
         //
-        const [searchCustomer,setSearchCustomer] = useState(false) ;
+        const [searchCustomer,setSearchCustomer] = useState( 0 ) ;
         const [arrayCustomers,setArrayCustomers] = useState<CustomerDataType[]>([]) ;
         //
         const fetchAllCustomers = useQuery(GET_CUSTOMERS) ;
@@ -72,7 +72,12 @@ export const BodyMain = (props: any) => {
                     <Col xs={0} md={0} lg={4} xl={4} xxl={5} ></Col>
                     <Col xs={24} md={24} lg={16} xl={16} xxl={15} >
                         <Row>
-                            <Search onSearch={onChangeSearch} />
+                            <Search
+                                onSearch={onChangeSearch}
+                                onPressEnter={ ({target})=>{
+                                    onChangeSearch(target.value) ;
+                                }}
+                            />
                         </Row>
                         <Row style={{paddingTop:'35px'}} >
                             <TableCustomers arrayCustomer={arrayCustomers} />

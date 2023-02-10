@@ -29,10 +29,9 @@ export const TableCustomers: React.FC<PropsTableCustomer> = ({ arrayCustomer=[] 
         const [customersData,setCustomersData] = useState([]) ;
         //
         useEffect( ()=>{
-            setCustomersData(arrayCustomer) ;
-        }, [arrayCustomer] )
-        //
-        //console.log( new Date().toISOString()+"...TableCustomers::customersData: ",customersData.length,";") ;
+            let tempArray = arrayCustomer.map((elem:any,index:number)=>{ return {key:index,...elem};})
+            setCustomersData( tempArray ) ;
+        }, [arrayCustomer] ) ;
         //
         let outRender = <Table 
                             columns={columnsCustomer}
