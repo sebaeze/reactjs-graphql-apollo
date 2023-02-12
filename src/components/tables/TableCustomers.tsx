@@ -4,11 +4,13 @@
 import React, { useEffect, useState }            from "react" ;
 import { Table }                                 from "antd"  ;
 import { ColumnsType }                           from "antd/es/table";
-import { Customer }                              from "../interfaces/customer" ;
 import { CustomerDataType }                      from "../interfaces/customer" ;
 //
 //
 const columnsCustomer: ColumnsType<CustomerDataType> = [
+    { title: "Number", dataIndex: "customerNumber", key: "customerNumber" ,
+        defaultSortOrder: "descend", sorter: (a,b) => a.customerNumber-b.customerNumber
+    } ,
     { title: "Name", dataIndex: "customerName", key: "customerName" } ,
     { title: "Last Name", dataIndex: "contactLastName", key: "contactLastName" } ,
     { title: "Phone", dataIndex: "phone", key: "phone" } ,

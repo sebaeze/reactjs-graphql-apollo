@@ -16,20 +16,11 @@ import { CustomerDataType }     from "../interfaces/customer"  ;
 export const BodyMain = (props: any) => {
     try {
         //
-        const [searchCustomer,setSearchCustomer] = useState( 0 ) ;
+        const [searchCustomer,setSearchCustomer] = useState(0) ;
         const [arrayCustomers,setArrayCustomers] = useState<CustomerDataType[]>([]) ;
         //
         const fetchAllCustomers = useQuery(GET_CUSTOMERS) ;
         const [ fetchCustomInfo, customerInfoResult ] = useLazyQuery(GET_CUSTOMER) ;
-        //
-        useEffect(()=>{
-            try {
-                console.log( new Date().toISOString()+"...useEffect: searchCustomer: ",searchCustomer,";") ;
-            } catch(errUE){
-                console.log("***ERROR: useEffect: ",errUE) ;
-                throw errUE  ;
-            } ;
-        }, [searchCustomer] ) ;
         //
         useEffect(()=>{
             if ( fetchAllCustomers.loading===false && fetchAllCustomers.data!=undefined && fetchAllCustomers.data.getCustomers!=undefined ){
@@ -40,10 +31,14 @@ export const BodyMain = (props: any) => {
         },[fetchAllCustomers.data])
         //
         useEffect(()=>{
+            //
             console.log("...BodyMain:: useEffect::searchCustomer: ",searchCustomer,";") ;
-            fetchCustomInfo({
-                variables: {customerNumber: searchCustomer}
-            }) ;
+            if ( searchCustomer>0 ){
+                fetchCustomInfo({
+                    variables: {customerNumber: searchCustomer}
+                }) ;
+            } ;
+            //
         },[searchCustomer]) ;
         //
         useEffect(()=>{
@@ -56,9 +51,15 @@ export const BodyMain = (props: any) => {
         const onChangeSearch = (argValueToSearch:string) => {
             try {
                 //
-                let toNumber = parseInt( argValueToSearch.replace(/0*(\d+)/, '$1')) ;
-                console.log("..onChangeSearch:: arg: ",argValueToSearch," toNumber: ",toNumber,";") ;
-                setSearchCustomer( toNumber ) ;
+                if ( argValueToSearch.length===0 && searchCustomer>0 && fetchAllCustomers.data.getCustomers.length>0 ){
+                    let arrayDataUpdated = fetchAllCustomers.data.getCustomers.map((elem2map:any,elemIndex:number)=>{ return {key:elemIndex,...elem2map}}) ;
+                    console.log("....arrayDataUpdated::l: ",arrayDataUpdated.length,";") ;
+                    setArrayCustomers( arrayDataUpdated ) ;
+                } else {
+                    let toNumber = parseInt( argValueToSearch.replace(/0*(\d+)/, '$1')) ;
+                    console.log("..onChangeSearch:: arg: ",argValueToSearch," toNumber: ",toNumber,";") ;
+                    setSearchCustomer( toNumber ) ;
+                } ;
                 //
             } catch(errOCS){
                 console.log("**ERROR: ",errOCS) ;
